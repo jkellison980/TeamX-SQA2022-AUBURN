@@ -6,6 +6,9 @@ Parser to file YAML files
 
 import yaml
 import constants 
+import logger
+
+logObj = logger.initLogObj()
 
 def checkIfWeirdYAML(yaml_script):
     '''
@@ -14,6 +17,8 @@ def checkIfWeirdYAML(yaml_script):
     val = False
     if ( any(x_ in yaml_script for x_ in constants.WEIRD_PATHS  ) ):
         val = True 
+        logObj.log(20,'Weird YAML File given.')
+
     return val 
 
 
@@ -86,6 +91,8 @@ def checkIfValidK8SYaml(path2yaml):
     key_lis      = list( getValuesRecursively  ( yaml_dict ) )
     if ( any(x_ in key_lis for x_ in constants.K8S_FORBIDDEN_KW_LIST ) ): 
         val2ret = False 
+        logObj.log(20,'Invalid YAML File given!')
+        
     else: 
         if ( constants.API_V_KEYNAME in temp_ ) and (constants.KIND_KEY_NAME in temp_):
             val2ret = True 
@@ -114,6 +121,8 @@ def checkIfValidHelm(path_script):
     val_ret = False 
     if ( (constants.HELM_KW in path_script) or (constants.CHART_KW in path_script) or (constants.SERVICE_KW in path_script) or (constants.INGRESS_KW in path_script)  or(constants.HELM_DEPLOY_KW in path_script) or (constants.CONFIG_KW in path_script) )  and (constants.VALUE_KW in path_script) :
         val_ret = True 
+    if val_ret == False:
+        logObj.log(20, 'Helm file not Valid!')
     return val_ret
 
 
@@ -125,6 +134,7 @@ def readYAMLAsStr( path_script ):
 
 def loadMultiYAML( script_ ):
     dicts2ret = []
+    logObj.log(20,'Loading YAML files into dictionary')
     with open(script_, constants.FILE_READ_FLAG  ) as yml_content :
         try:
             for d_ in yaml.safe_load_all(yml_content) :

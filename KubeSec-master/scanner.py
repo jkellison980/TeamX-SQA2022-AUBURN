@@ -9,6 +9,7 @@ import graphtaint
 import os 
 import pandas as pd 
 import numpy as np 
+import logger
 
 def getYAMLFiles(path_to_dir):
     valid_  = [] 
