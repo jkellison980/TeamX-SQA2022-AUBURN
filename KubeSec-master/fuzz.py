@@ -20,12 +20,12 @@ if __name__ == "__main__":
     fuzz_targets = [
         (
             checkIfValidKeyValue, [
-                (ok==asd),
+                (True),
             ]
         ),
         (
             scanKeys,[
-                (None),
+                (False),
             ]
         )
     ]
