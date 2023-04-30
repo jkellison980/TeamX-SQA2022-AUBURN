@@ -1,10 +1,10 @@
 import traceback
-from typing import list, Any
+from typing import List, Any
 import numpy as np
 from graphtaint import getYAMLFiles
 
 
-def fuzz(method, fuzzed_args: list.List[Any]):
+def fuzz(method, fuzzed_args: List[Any]):
     for args in fuzzed_args:
         try:
             result = method(*args)
