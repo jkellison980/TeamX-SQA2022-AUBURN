@@ -9,12 +9,16 @@ import graphtaint
 import os 
 import pandas as pd 
 import numpy as np 
+import logger 
+
 
 def getYAMLFiles(path_to_dir):
     valid_  = [] 
     for root_, dirs, files_ in os.walk( path_to_dir ):
        for file_ in files_:
            full_p_file = os.path.join(root_, file_)
+           logObj = logger.giveMeLoggingObject()
+           logObj.info('Check yaml files')
            if(os.path.exists(full_p_file)):
              if (full_p_file.endswith( constants.YML_EXTENSION  )  or full_p_file.endswith( constants.YAML_EXTENSION  )  ):
                valid_.append(full_p_file)
@@ -34,6 +38,8 @@ def isValidUserName(uName):
 def isValidPasswordName(pName): 
     valid = True
     if (isinstance( pName , str)  ): 
+        logObj = logger.giveMeLoggingObject()
+        logObj.info('Check valid input for isValidPassword')
         if( any(z_ in pName for z_ in constants.FORBIDDEN_PASS_NAMES) )  : 
             valid = False  
         else: 
@@ -95,6 +101,8 @@ def scanPasswords(k_ , val_lis ):
 def checkIfValidKeyValue(single_config_val):
     flag2Ret = False 
     if ( isinstance( single_config_val, str ) ):
+        logObj = logger.giveMeLoggingObject()
+        logObj.info('Check valid key value')
         if ( any(x_ in single_config_val for x_ in constants.VALID_KEY_STRING ) ):
             flag2Ret = True 
     return flag2Ret
@@ -107,6 +115,8 @@ def scanKeys(k_, val_lis):
         for val_ in val_lis:
             if (checkIfValidKeyValue( val_ ) ): 
                 hard_coded_keys.append( val_ )
+                logObj = logger.giveMeLoggingObject()
+                logObj.info('Check scannned Keys')
     return hard_coded_keys    
 
 
@@ -125,6 +135,8 @@ def scanForSecrets(yaml_d):
         # print(unameList)
         passwList = scanPasswords( key_, value_list  )
         keyList   = scanKeys( key_, value_list )
+        logObj = logger.giveMeLoggingObject()
+        logObj.info('Check scan for secrets')
         # print(keyList)
         if( len(unameList) > 0  )  or ( len(passwList) > 0  ) or ( len(keyList) > 0  ) :
             dic2ret_secret[key_] =  ( unameList, passwList, keyList ) 

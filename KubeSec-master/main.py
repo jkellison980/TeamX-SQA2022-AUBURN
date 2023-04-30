@@ -13,7 +13,6 @@ Testing for project
 test  for project2
 '''
 
-
 def getCountFromAnalysis(ls_):
     list2ret           = []
     for tup_ in ls_:
@@ -70,11 +69,19 @@ if __name__ == '__main__':
 
     # ORG_DIR         = '/Users/arahman/K8S_REPOS/TEST_REPOS/'
     # OUTPUT_FILE_CSV = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Research/Kubernetes/StaticTaint/data/V16_TEST_OUTPUT.csv'
+    
+    # ORG_DIR = 'C:\Users\\SopY0\\Desktop\\SQAProject\KubSec-master\\TEST_ARTIFACTS'
+    # OUTPUT_FILE_CSV = 'C:\\Users\\SopY0\\Desktop\\SQAProject'
+    
 
     content_as_ls   = scanner.runScanner( ORG_DIR )
     df_all          = pd.DataFrame( getCountFromAnalysis( content_as_ls ) )
 
-    df_all.to_csv( OUTPUT_FILE_CSV, header= constants.CSV_HEADER , index=False, encoding= constants.CSV_ENCODING ) 
+
+    df_all.to_csv( OUTPUT_FILE_CSV, 
+                  header= constants.CSV_HEADER , 
+                  index=False, encoding= constants.CSV_ENCODING,
+                    ) 
 
 
 

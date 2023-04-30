@@ -6,7 +6,7 @@ from scanner import checkIfValidKeyValue
 from scanner import scanKeys
 from scanner import isValidPasswordName
 from scanner import scanForSecrets
-from graphtaint import getYAMLFiles
+from scanner import getYAMLFiles
 
 def fuzz(method, fuzzed_args: List[Any]):
     for args in fuzzed_args:
