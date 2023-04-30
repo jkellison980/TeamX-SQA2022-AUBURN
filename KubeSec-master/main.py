@@ -65,8 +65,8 @@ if __name__ == '__main__':
     # ORG_DIR         = '/Users/arahman/K8S_REPOS/TEST_REPOS/'
     # OUTPUT_FILE_CSV = '/Users/arahman/Documents/OneDriveWingUp/OneDrive-TennesseeTechUniversity/Research/Kubernetes/StaticTaint/data/V16_TEST_OUTPUT.csv'
 
-    ORG_DIR = 'C:\\Users\\Matthew\\Documents\\COMP 5710\\project\\TeamX-SQA2022-AUBURN\\KubeSec-master\\TEST_ARTIFACTS'
-    OUTPUT_FILE_CSV = 'C:\\Users\\Matthew\\Desktop'
+    # ORG_DIR = 'C:\\Users\\Matthew\\Documents\\COMP 5710\\project\\TeamX-SQA2022-AUBURN\\KubeSec-master\\TEST_ARTIFACTS'
+    # OUTPUT_FILE_CSV = 'C:\\Users\\Matthew\\Documents\\COMP 5710\\project\\TeamX-SQA2022-AUBURN\\KubeSec-master'
     
     logObj = logger.initLogObj()
 
