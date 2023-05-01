@@ -6,7 +6,7 @@ from scanner import isValidUserName
 from scanner import scanKeys
 from scanner import isValidPasswordName
 from scanner import scanForSecrets
-from scanner import getYAMLFiles
+from scanner import isValidKey
 
 def fuzz(method, fuzzed_args: List[Any]):
     for args in fuzzed_args:
@@ -65,7 +65,7 @@ if __name__ == "__main__":
             ]
         ),
           (
-            getYAMLFiles, [
+            isValidKey, [
                 (None, None),
                 (1, 2),
                 (1.0, 2.0),

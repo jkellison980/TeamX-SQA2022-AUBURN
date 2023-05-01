@@ -54,6 +54,8 @@ def isValidPasswordName(pName):
 def isValidKey(keyName): 
     valid = False 
     if ( isinstance( keyName, str )  ):
+        logObj = logger.giveMeLoggingObject()
+        logObj.info('Check valid input for key')
         if( any(z_ in keyName for z_ in constants.LEGIT_KEY_NAMES ) ) : 
             valid = True   
         else: 
