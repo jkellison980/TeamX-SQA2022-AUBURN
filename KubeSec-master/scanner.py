@@ -14,18 +14,21 @@ import logger
 
 def getYAMLFiles(path_to_dir):
     valid_  = [] 
+    logObj = logger.giveMeLoggingObject()
+    logObj.info('Check yaml files')
     for root_, dirs, files_ in os.walk( path_to_dir ):
        for file_ in files_:
            full_p_file = os.path.join(root_, file_)
-           logObj = logger.giveMeLoggingObject()
-           logObj.info('Check yaml files')
            if(os.path.exists(full_p_file)):
              if (full_p_file.endswith( constants.YML_EXTENSION  )  or full_p_file.endswith( constants.YAML_EXTENSION  )  ):
                valid_.append(full_p_file)
+    
     return valid_ 
 
 def isValidUserName(uName): 
     valid = True
+    logObj = logger.giveMeLoggingObject()
+    logObj.info('Check valid user name')
     if (isinstance( uName , str)  ): 
         if( any(z_ in uName for z_ in constants.FORBIDDEN_USER_NAMES )   ): 
             valid = False   
@@ -65,6 +68,7 @@ def checkIfValidSecret(single_config_val):
     if ( isinstance( single_config_val, str ) ):
         single_config_val = single_config_val.lower()
         config_val = single_config_val.strip() 
+        
         if ( any(x_ in config_val for x_ in constants.INVALID_SECRET_CONFIG_VALUES ) ):
             flag2Ret = False 
         else:
@@ -100,23 +104,25 @@ def scanPasswords(k_ , val_lis ):
 
 def checkIfValidKeyValue(single_config_val):
     flag2Ret = False 
+    logObj = logger.giveMeLoggingObject()
+    logObj.info('Check valid key value')
     if ( isinstance( single_config_val, str ) ):
-        logObj = logger.giveMeLoggingObject()
-        logObj.info('Check valid key value')
+        
         if ( any(x_ in single_config_val for x_ in constants.VALID_KEY_STRING ) ):
             flag2Ret = True 
     return flag2Ret
 
 def scanKeys(k_, val_lis):
     hard_coded_keys = []
+    logObj = logger.giveMeLoggingObject()
+    logObj.info('Check scannned Keys')
     if isinstance(k_, str):
         k_ = k_.lower()    
     if( isValidKey( k_ )    ):
         for val_ in val_lis:
             if (checkIfValidKeyValue( val_ ) ): 
                 hard_coded_keys.append( val_ )
-                logObj = logger.giveMeLoggingObject()
-                logObj.info('Check scannned Keys')
+                
     return hard_coded_keys    
 
 

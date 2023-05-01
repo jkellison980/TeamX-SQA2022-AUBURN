@@ -2,7 +2,7 @@ import traceback
 from typing import List, Any
 import numpy as np 
 #Comment for testing 
-from scanner import checkIfValidKeyValue 
+from scanner import isValidUserName
 from scanner import scanKeys
 from scanner import isValidPasswordName
 from scanner import scanForSecrets
@@ -39,7 +39,7 @@ def fuzz(method, fuzzed_args: List[Any]):
 if __name__ == "__main__":
     fuzz_method = [
         (
-            checkIfValidKeyValue, [
+            isValidUserName, [
                 (None),
             ]
         ),
@@ -61,7 +61,7 @@ if __name__ == "__main__":
                 (""),
                 (float("-inf")),
                 (1j),
-                (np.NAN)
+                (np.NAN),
             ]
         ),
           (

@@ -4,5 +4,5 @@ def giveMeLoggingObject():
     format_str = '%(asctime)s %(message)s'
     file_name = 'FORENSICS_LOG.log'
     logging.basicConfig(format= format_str, filename =file_name, level = logging.INFO)
-    loggerObj = logging.getLogger('tcpserver')
+    loggerObj = logging.getLogger('Forensics_logger')
     return loggerObj
