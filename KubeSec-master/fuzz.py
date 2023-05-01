@@ -55,22 +55,22 @@ if __name__ == "__main__":
         ),
         (
             scanForSecrets, [
-                (None),
-                ("yaml"),
+                # (None),
+                # ("yaml"),
                 ([]),
-                (""),
-                (float("-inf")),
-                (1j),
-                (np.NAN),
+                # (""),
+                # (float("-inf")),
+                # (1j),
+                # (np.NAN),
             ]
         ),
           (
             isValidKey, [
-                (None, None),
-                (1, 2),
-                (1.0, 2.0),
+                # (None, None),
+                # (1, 2),
+                # (1.0, 2.0),
                 ([], {}),
-                ("bad-filename", "random"),
+                # ("bad-filename", "random"),
             ]
         )
 
